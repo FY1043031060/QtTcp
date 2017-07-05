@@ -3,7 +3,7 @@
 TCPServerThread::TCPServerThread(QObject *parent) :
     QObject(parent)
 {
-    m_tcpServer.moveToThread(&m_thread);
+    m_tcpServer.moveToThread(&m_thread);    ////WARNING::TCPServer to be used error.
     connect(this, &TCPServerThread::dataSend,
             &m_tcpServer, &BusTCPServer::onDataSend,Qt::QueuedConnection);
     connect(&m_threadTimer,&QTimer::timeout,[&](){
@@ -11,6 +11,7 @@ TCPServerThread::TCPServerThread(QObject *parent) :
 
     });
     m_threadTimer.start(20);
+
 }
 
 
