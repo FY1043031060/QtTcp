@@ -6,11 +6,13 @@
 
 
 # network ÍøÂçÏà¹ØÄ£¿é
-QT       += core gui network
+QT  += core  network
+QT  -= gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+CONFIG += console
+CONFIG -= app_bundle
 
-TARGET = 04_Tcp
+TARGET = TcpServer
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -26,11 +28,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        serverwidget.cpp
+    TcpServerThread.cpp \
+    BusTCPServer.cpp \
+    main.cpp \
+    TcpServerThread.cpp
 
-HEADERS  += serverwidget.h
+HEADERS  += \
+    TcpServerThread.h \
+    BusTCPServer.h \
+    TcpServerThread.h
 
-FORMS    += serverwidget.ui
+FORMS    += serverwidget.ui \
+    serverwidget.ui
 
 
 CONFIG += C++11
+
+SUBDIRS += \
+    TcpServer.pro
