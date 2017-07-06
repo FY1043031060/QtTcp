@@ -1,18 +1,19 @@
 #include <QCoreApplication>
-#include "TcpServerThread.h"
+#include <PollThread.h>
 #include <QTimer>
+#include <QThread>
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-//    ServerWidget w;
-//    w.show();
-    TCPServerThread s;
+
+    QThread th;
+
+    PollThread s;
+    s.moveToThread(&th);
 
     QTimer m_timer;
-    QObject::connect(&m_timer,&QTimer::timeout,[&](){
-        emit s.dataSend(QByteArray(8,'a'));
-    });
+    QObject::connect(&m_timer,&QTimer::timeout,&s,&PollThread::processWork);
     m_timer.start(20);
 
     return a.exec();

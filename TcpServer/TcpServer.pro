@@ -31,12 +31,14 @@ SOURCES += main.cpp\
     TcpServerThread.cpp \
     BusTCPServer.cpp \
     main.cpp \
-    TcpServerThread.cpp
+    TcpServerThread.cpp \
+    PollThread.cpp
 
 HEADERS  += \
     TcpServerThread.h \
     BusTCPServer.h \
-    TcpServerThread.h
+    TcpServerThread.h \
+    PollThread.h
 
 FORMS    += serverwidget.ui \
     serverwidget.ui

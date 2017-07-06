@@ -11,6 +11,8 @@ BusTCPServer::BusTCPServer(QObject *parent)
 BusTCPServer::~BusTCPServer()
 {
     m_pTcpServer->close();
+    if(m_pTcpSocket != NULL)
+        m_pTcpSocket->close();
 }
 
 void BusTCPServer::onDataSend(QByteArray data)
